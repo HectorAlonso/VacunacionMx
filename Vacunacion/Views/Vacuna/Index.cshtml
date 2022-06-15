@@ -1,0 +1,49 @@
+﻿@model  IEnumerable<Vacunacion.Models.Vacuna>
+@{
+    ViewBag.Title = "Vacunas";
+}
+
+<h2>Vacunas</h2>
+
+<a href="@Url.Action("Crear","Vacuna")" class="btn btn-primary mb8">Crear Vacuna</a>
+
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2">Clave</th>
+                    <th class="col-md-3">Nombre</th>
+                    <th class="col-md-3">Marca</th>
+                    <th class="col-md-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Vacuna in Model)
+                {
+                    <tr>
+                        <td>
+                            @Vacuna.Id
+                        </td>
+
+                        <td>
+                            @Vacuna.Nombre
+                        </td>
+                        <td>
+                            @Vacuna.Marca
+                        </td>
+                        <td class="justify-content-center">
+                            <a href="@Url.Action("Editar","Vacuna", new { Id = Vacuna.Id})" class="btn btn-primary">
+                                <i class="bi-pencil-fill"></i>
+                            </a>
+                            <a href="@Url.Action("Borrar","Vacuna", new { Id = Vacuna.Id})" class="btn btn-danger">
+                                <i class="bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

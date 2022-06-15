@@ -1,0 +1,71 @@
+﻿
+@model Vacunacion.Models.Registro
+@{
+    ViewBag.Title = "Eliminar Registro";
+}
+
+<h1>Eliminar Registro</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Borrar", "Registro")" method="post" id="Eliminar">
+
+            <div class="mb8">
+                @Html.TextBoxFor(x => x.Id, new { @class = "form-control hidden" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.FechaVacunacion)
+                @Html.TextBoxFor(x => x.FechaVacunacion, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.FechaVacunacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb8">
+                @Html.LabelFor(x => x.Vacuna)
+                @Html.TextBoxFor(x => x.Vacuna, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Vacuna, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb8">
+                @Html.LabelFor(x => x.Municipio)
+                @Html.TextBoxFor(x => x.Municipio, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Municipio, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb8">
+                @Html.LabelFor(x => x.Dosis)
+                @Html.TextBoxFor(x => x.Dosis, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Dosis, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                    Eliminar
+                </button>
+                @Html.ActionLink("Cancelar", "Index", "Registro", new { @class = "btn btn-default" })
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Esta seguro que desea eliminar el registro de la dosis aplicada?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="Eliminar()" class="btn btn-danger">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        function Eliminar() {
+            $("#Eliminar").submit();
+        }
+    </script>
+}

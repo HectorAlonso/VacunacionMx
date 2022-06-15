@@ -1,0 +1,53 @@
+﻿
+@model  IEnumerable<Vacunacion.Models.Registro>
+
+@{
+    ViewBag.Title = "Registro de Dosis";
+}
+
+<h1>Registro de Dosis</h1>
+
+<a href="@Url.Action("Crear","Registro")" class="btn btn-primary mb8">Agregar una Dosis</a>
+
+<div class="row">
+    <div class="col-md-10">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2">Fecha de Vacunacion</th>
+                    <th class="col-md-2">Vacuna</th>
+                    <th class="col-md-2">Municipio</th>
+                    <th class="col-md-2">Dosis</th>
+                    <th class="col-md-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Registro in Model)
+                {
+                    <tr>
+                        <td>
+                            @Registro.FechaVacunacion.ToString("d")
+                        </td>
+                        <td>
+                            @Registro.Vacuna
+                        </td>
+                        <td>
+                            @Registro.Municipio
+                        </td>
+                        <td>
+                            @Registro.Dosis
+                        </td>
+                        <td class="justify-content-center">
+                            <a href="@Url.Action("Editar","Registro", new { Id = Registro.Id})" class="btn btn-primary">
+                                <i class="bi-pencil-fill"></i>
+                            </a>
+                            <a href="@Url.Action("Borrar","Registro", new { Id = Registro.Id})" class="btn btn-danger">
+                                <i class="bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

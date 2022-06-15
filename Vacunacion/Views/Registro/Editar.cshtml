@@ -1,0 +1,55 @@
+﻿
+@model Vacunacion.Models.Registro
+@{
+    ViewBag.Title = "Editar una Dosis";
+
+    List<SelectListItem> ListaVacunas = (List<SelectListItem>)ViewBag.ListaVacunas;
+    List<SelectListItem> ListaMunicipios = (List<SelectListItem>)ViewBag.ListaMunicipios;
+    List<SelectListItem> ListaDosis = (List<SelectListItem>)ViewBag.ListaDosis;
+}
+
+<h1>Editar una Dosis</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Editar", "Registro")" method="post">
+
+            <div class="mb8">
+                @Html.TextBoxFor(x => x.Id, new { @class = "form-control hidden" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.FechaVacunacion)
+                @Html.EditorFor(x => x.FechaVacunacion, new { htmlAttributes = new { @class = "form-control", @id = "Fecha" } })
+                @Html.ValidationMessageFor(x => x.FechaVacunacion, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.VacunaId)
+                @Html.DropDownListFor(x => x.VacunaId, ListaVacunas, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.VacunaId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.MunicipioId)
+                @Html.DropDownListFor(x => x.MunicipioId, ListaMunicipios, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.MunicipioId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.DosisId)
+                @Html.DropDownListFor(x => x.DosisId, ListaDosis, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.DosisId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                <input type="submit" class="btn btn-primary" value="Actualizar" />
+                @Html.ActionLink("Cancelar", "Index", "Registro", new { @class = "btn btn-default" })
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

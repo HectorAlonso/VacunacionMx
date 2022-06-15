@@ -1,0 +1,50 @@
+﻿
+@model Vacunacion.Models.Vacuna
+@{
+    ViewBag.Title = "Eliminar Vacuna";
+    string mensaje = ViewBag.Error;
+
+}
+
+<h2>Eliminar Vacuna</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Borrar", "Vacuna")" method="post" id="Eliminar">
+
+            <div class="mb8">
+                @Html.TextBoxFor(x => x.Id, new { @class = "form-control hidden" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Marca)
+                @Html.TextBoxFor(x => x.Marca, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Marca, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-danger" value="Eliminar" />
+                @Html.ActionLink("Cancelar", "Index", "Vacuna", new { @class = "btn btn-default" })
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+        $(document).ready(function () {
+            if (@mensaje == "1")
+            {
+                alert("No puede eliminar la Vacuna porque pertenece a un registro de una aplicación de una vacuna");
+            }
+        });
+</script>
+}

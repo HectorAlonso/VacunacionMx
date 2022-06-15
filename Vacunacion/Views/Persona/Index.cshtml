@@ -1,0 +1,38 @@
+﻿@model Vacunacion.Models.Persona
+
+<h2>Datos personales</h2>
+<h3> Usted ha sido registrado correctamente</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div >
+
+            <div class="mb8">
+                @Html.TextBoxFor(x => x.Folio, new { @class = "form-control hidden" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Correo)
+                @Html.TextBoxFor(x => x.Correo, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Edad)
+                @Html.TextBoxFor(x => x.Edad, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.RFC)
+                @Html.TextBoxFor(x => x.RFC, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div class="mb8"> 
+                <a href="@Url.Action("Index", "Registro")" class = "btn btn-primary">Registrar Dosis Aplicadas</a>
+            </div>
+        </div>
+    </div>
+</div>

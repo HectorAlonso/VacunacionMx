@@ -1,0 +1,28 @@
+﻿@model Vacunacion.Models.Municipio
+@{
+    ViewBag.Title = "Crear Municipio";
+}
+
+<h1>Crear Municipio</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Crear", "Municipio")" method="post">
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary" value="Agregar" />
+                @Html.ActionLink("Cancelar", "Index", "Municipio", new { @class = "btn btn-default" })
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

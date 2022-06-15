@@ -1,0 +1,22 @@
+﻿.mb8 {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+div .Personal {
+    height: 50px;
+    width: 30%;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+}
+.botones{
+    margin-left: 80px
+}

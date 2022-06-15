@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<Vacunacion.Models.Municipio>
+
+@{
+    ViewBag.Title = "Municipios";
+}
+
+<h1>Municipios</h1>
+
+<a href="@Url.Action("Crear","Municipio")" class="btn btn-primary mb8">Crear Municipio</a>
+
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2">Clave</th>
+                    <th class="col-md-4">Nombre</th>
+                    <th class="col-md-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Municipio in Model)
+                {
+                    <tr>
+                        <td>
+                            @Municipio.Id
+                        </td>
+
+                        <td>
+                            @Municipio.Nombre
+                        </td>
+                        <td class="justify-content-center">
+                            <a href="@Url.Action("Editar","Municipio", new { Id = Municipio.Id})" class="btn btn-primary">
+                                <i class="bi-pencil-fill"></i>
+                            </a>
+                            <a href="@Url.Action("Borrar","Municipio", new { Id = Municipio.Id})" class="btn btn-danger">
+                                <i class="bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

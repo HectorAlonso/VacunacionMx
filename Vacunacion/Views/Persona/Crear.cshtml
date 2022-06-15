@@ -1,0 +1,49 @@
+﻿
+@model Vacunacion.Models.Persona
+@{
+    ViewBag.Title = "Mi Vacuna";
+}
+<h1>Registrarse</h1>
+
+<div class="Personal">Informacion Personal</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <form action="@Url.Action("Crear", "Persona")" method="post" id="Agregar">
+            <div class="mb8 ">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8 ">
+                @Html.LabelFor(x => x.Correo)
+                @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Correo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Edad)
+                @Html.TextBoxFor(x => x.Edad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Edad, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.RFC)
+                @Html.TextBoxFor(x => x.RFC, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.RFC, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb8">
+                <input type="submit" class="btn btn-primary" value="Agregar" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

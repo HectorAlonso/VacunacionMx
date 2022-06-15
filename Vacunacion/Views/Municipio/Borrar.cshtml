@@ -1,0 +1,44 @@
+﻿
+@model Vacunacion.Models.Municipio
+@{
+    ViewBag.Title = "Eliminar Municipio";
+    string mensaje = ViewBag.Error;
+}
+
+
+<h1>Eliminar Municipio</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="@Url.Action("Borrar", "Municipio")" method="post" id="Eliminar">
+
+            <div class="mb8">
+                @Html.TextBoxFor(x => x.Id, new { @class = "form-control hidden" })
+            </div>
+
+            <div class="mb8">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control", @readOnly = true })
+                @Html.ValidationMessageFor(x => x.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-danger" value="Eliminar" />
+                @Html.ActionLink("Cancelar", "Index", "Municipio", new { @class = "btn btn-default" })
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+        $(document).ready(function () {
+            if (@mensaje == "1")
+            {
+                alert("No puede eliminar el municipio porque pertenece a un registro de una aplicación de una vacuna");
+            }
+        });
+</script>
+}
